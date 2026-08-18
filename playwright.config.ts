@@ -44,11 +44,12 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
+        viewport: { width: 1920, height: 1080 },
         launchOptions: {
           args: [
-            '--start-maximized',
-           // '--window-position=0,0',
-           // '--window-size=1920,1080',
+            '--disable-gpu',
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
           ],
         },
       },
