@@ -6,7 +6,7 @@ import LoginPage from '../pages/loginPage';
 import CartPage from '../pages/cartPage';
 import ProductsPage from '../pages/productsPage';
 
-test('Create user , add products to cart, verify cart, delete user ', async ({ customBrowser: browser, request }) => {
+test('Create user , add products to cart, verify cart, delete user', async ({ customBrowser: browser, request }) => {
   const userData = user;
   const apiClient = new UserApiClient(request, 'https://automationexercise.com/');
   try {
