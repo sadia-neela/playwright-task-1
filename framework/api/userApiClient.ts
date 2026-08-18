@@ -1,4 +1,4 @@
-import { APIRequestContext, APIResponse, test } from '@playwright/test';
+import { APIRequestContext, test } from '@playwright/test';
 import  { USER } from '../../types/userInfotype';
 
 export type ApiResponseType = {

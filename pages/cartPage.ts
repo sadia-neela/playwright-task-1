@@ -2,6 +2,8 @@ import { Page } from '@playwright/test';
 import BasePage from "../framework/ui/basePage/basePage";
 import { Label } from "../framework/ui/elements/Label";
 import Element from '../framework/ui/elements/Element';
+import regexConstants from '../framework/ui/constants/regexConstants';
+import { parseRupees } from '../framework/utils/testUtils';
 
 export type CartProductInfo = {
   name: string;
@@ -36,10 +38,10 @@ export default class CartPage extends BasePage {
     const totalText = await totalLabel.getText();
 
     return {
-      name: name.replaceAll(/\s+/g, '').trim(),
-      price: this.parseRupees(priceText),
+      name: name,
+      price: parseRupees(priceText, regexConstants.digitsOnly),
       quantity: parseInt(quantityText, 10),
-      total: this.parseRupees(totalText),
+      total: parseRupees(totalText, regexConstants.digitsOnly),
     };
   }
 
@@ -50,9 +52,5 @@ export default class CartPage extends BasePage {
 
   async isProductInCart(productId: string): Promise<boolean> {
     return await this.cartTableRowByProductID(productId).state.isDisplayed();
-  }
-
-  private parseRupees(text: string): number {
-    return Number(text.replace(/[^0-9.]/g, ''));
   }
 }

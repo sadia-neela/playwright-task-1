@@ -29,7 +29,10 @@ export default class Element {
     return await test.step(`Action: Get text from '${this._name}'`, async () => {
       await this.waitForDisplayed();
       const text = await this._locator.innerText();
-      console.log(`Text from '${this._name}': ${text}`);
+      test.info().annotations.push({
+        type: 'text',
+        description: `Text from '${this._name}': "${text}"`,
+      });
       return text;
     });
   }
@@ -49,6 +52,15 @@ export default class Element {
   async waitForDisplayed(timeout: number = Timeouts.EXPLICIT_WAIT): Promise<void> {
     await test.step(`Wait for '${this._name}' to be displayed for ${timeout} ms`, async () => {
       await this._locator.waitFor({ state: 'visible', timeout });
+    });
+  }
+
+  /**
+   * Scrolls the element into view encapsulated within a reporting step.
+   */
+  async scrollIntoView(): Promise<void> {
+    await test.step(`Scroll '${this._name}' into view`, async () => {
+      await this._locator.scrollIntoViewIfNeeded();
     });
   }
 }

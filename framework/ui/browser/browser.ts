@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { test, Page, BrowserContext, Download } from '@playwright/test';
+import { test, Page, BrowserContext } from '@playwright/test';
 
 export default class Browser {
   private _page: Page;

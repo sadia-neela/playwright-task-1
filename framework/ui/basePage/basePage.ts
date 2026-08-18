@@ -1,7 +1,7 @@
 import { Page, test } from '@playwright/test';
 import Timeouts from '../constants/timeouts';
 import BaseElement from '../elements/Element';
-import { Button } from '../elements';
+import { Button } from '../elements/Button';
 
 export default class BasePage {
   protected readonly uniqueElement: BaseElement;
@@ -56,6 +56,7 @@ export default class BasePage {
 
   async clickNavbarLink(linkName: string): Promise<void> {
     const link = this.navbarNavLink(linkName);
+
     await test.step(`Page '${this._name}' — Click navbar link '${linkName}'`, async () => {
       await link.click();
     });
