@@ -63,4 +63,12 @@ export default class Element {
       await this._locator.scrollIntoViewIfNeeded();
     });
   }
+
+  async clickViaJS(): Promise<void> {
+    await test.step(`Action: Click on '${this._name}' via JavaScript`, async () => {
+      await this._locator.evaluate((element) => {
+        (element as HTMLElement).click();
+      });
+    });
+  }
 }

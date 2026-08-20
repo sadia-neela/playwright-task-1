@@ -16,7 +16,7 @@ export default class CartPage extends BasePage {
   private readonly cartTableRowByProductID: (productId: string) => Element;
 
   constructor(page: Page) {
-    super(page, new Label(page.locator('.cart_info'), 'Shopping Cart header'), 'Cart Page');
+    super(page, new Label(page.locator('.cart_info'), 'Shopping Cart header'), '/view_cart', 'Cart Page');
 
     this.cartTableRowByProductID = (productId: string) => new Element(
       page.locator(`//table//tbody//tr[@id="product-${productId}"]`),

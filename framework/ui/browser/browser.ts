@@ -47,7 +47,7 @@ export default class Browser {
    */
   async openUrl(url: string): Promise<void> {
     await test.step(`Browser — Open URL: "${url}"`, async () => {
-      await this._page.goto(url, { waitUntil: 'domcontentloaded' });
+      await this._page.goto(url, { waitUntil: 'load' });
     });
   }
 

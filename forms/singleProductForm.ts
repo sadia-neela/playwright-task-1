@@ -32,7 +32,7 @@ export default class SingleProductForm extends BaseForm {
     await this.productImageByProductId(productId).scrollIntoView();
     await this.productImageByProductId(productId).moveTo();
     await this.addToCartButtonByProductIdOnOverlay(productId).waitForDisplayed();
-    await this.addToCartButtonByProductIdOnOverlay(productId).click();
+    await this.addToCartButtonByProductIdOnOverlay(productId).clickViaJS();
   }
 
   async getProductInfo(productId: string): Promise<{ name: string; price: number }> {

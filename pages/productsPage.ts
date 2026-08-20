@@ -10,7 +10,7 @@ export default class ProductsPage extends BasePage {
   readonly singleProductForm: SingleProductForm;
 
   constructor(page: Page) {
-    super(page, new Label(page.locator('#search_product'), 'Search Product Input'), 'Products Page');
+    super(page, new Label(page.locator('#search_product'), 'Search Product Input'), '/products', 'Products Page');
     this.continueShoppingForm = new ContinueShoppingForm(page);
     this.singleProductForm = new SingleProductForm(page, '1');
   }
