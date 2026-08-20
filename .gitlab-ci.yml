@@ -3,7 +3,7 @@ stages:
 
 test:
   stage: test
-  image: mcr.microsoft.com/playwright:v1.55.0-noble
+  image: mcr.microsoft.com/playwright:v1.62.1-noble
   script:
     - npm ci
     - npx playwright test
